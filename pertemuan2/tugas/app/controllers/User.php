@@ -4,8 +4,8 @@ class User extends Controller
 {
     public function index()
     {
-        $data["judul"] = "Daftar Pengguna (User)";
-        $data['users'] = $this->model('User_model')->getAllUsers();
+        $data['judul'] = 'Daftar User';
+        $data['users'] = $this->model('User_model')->getAllUser();
         $this->view('templates/header', $data);
         $this->view('list', $data);
         $this->view('templates/footer');
@@ -13,7 +13,7 @@ class User extends Controller
 
     public function detail($id)
     {
-        $data["judul"] = "Detail user";
+        $data['judul'] = 'Detail User';
         $data['user'] = $this->model('User_model')->getUserById($id);
         $this->view('templates/header', $data);
         $this->view('detail', $data);
@@ -22,52 +22,47 @@ class User extends Controller
 
     public function tambah()
     {
-        $data['judul'] = 'Tambah User';
-        $this->view('templates/header', $data);
-        $this->view('tambah', $data);
-        $this->view('templates/footer');
-    }
-
-    public function prosesTambah()
-    {
         if ($this->model('User_model')->tambahDataUser($_POST) > 0) {
-            Flasher::setFlash('Berhasil', 'Data user berhasil ditambahkan.', 'success');
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/user');
+            exit;
         } else {
-            Flasher::setFlash('Gagal', 'Data user gagal ditambahkan.', 'danger');
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/user');
+            exit;
         }
-        header('Location: ' . BASEURL . '/user');
-        exit;
-    }
-
-    public function edit($id)
-    {
-        $data['user'] = $this->model('User_model')->getUserById($id);
-        $data['judul'] = 'Edit User: ' . $data['user']['name'];
-        $this->view('templates/header', $data);
-        $this->view('edit', $data);
-        $this->view('templates/footer');
-    }
-
-    public function prosesEdit()
-    {
-        if ($this->model('User_model')->editDataUser($_POST) > 0) {
-            Flasher::setFlash('Berhasil', 'Data user berhasil diubah.', 'success');
-        } else {
-            Flasher::setFlash('Gagal', 'Data user gagal diubah.', 'danger');
-        }
-        header('Location: ' . BASEURL . '/user');
-        exit;
     }
 
     public function hapus($id)
     {
         if ($this->model('User_model')->hapusDataUser($id) > 0) {
-            Flasher::setFlash('Berhasil', 'Data user berhasil dihapus.', 'success');
+            Flasher::setFlash('berhasil', 'dihapus', 'success');
+            header('Location: ' . BASEURL . '/user');
+            exit;
         } else {
-            Flasher::setFlash('Gagal', 'Data user gagal dihapus.', 'danger');
+            Flasher::setFlash('gagal', 'dihapus', 'danger');
+            header('Location: ' . BASEURL . '/user');
+            exit;
         }
-        header('Location: ' . BASEURL . '/user');
-        exit;
     }
 
+    public function getubah()
+    {
+        echo json_encode($this->model('User_model')->getUserById($_POST['id']));
+    }
+
+    public function ubah()
+    {
+        if ($this->model('User_model')->ubahDataUser($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'diubah', 'success');
+            header('Location: ' . BASEURL . '/user');
+            exit;
+        } else {
+            Flasher::setFlash('gagal', 'diubah', 'danger');
+            header('Location: ' . BASEURL . '/user');
+            exit;
+        }
+    }
 }
+
+?>
