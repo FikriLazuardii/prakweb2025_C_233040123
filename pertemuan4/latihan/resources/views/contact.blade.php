@@ -96,7 +96,7 @@
                         </div>
                         <div>
                             <h3 class="text-lg font-semibold text-gray-800">Telepon</h3>
-                            <p class="text-gray-600">+6285798208069</p>
+                            <p class="text-gray-600">+62 8579 8208 069</p>
                         </div>
                     </div>
 

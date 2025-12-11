@@ -47,8 +47,8 @@
                 <div>
                     <h3 class="font-bold text-lg mb-4">Contact Info</h3>
                     <ul class="text-gray-400 space-y-2">
-                        <li>Email: farrel.233040124@mail.unpas.ac.id</li>
-                        <li>Phone: +62 857 224 974 32</li>
+                        <li>Email: Pikii@mail.unpas.ac.id</li>
+                        <li>Phone: +62 8579 8208 069</li>
                         <li>Address: jl jalan no 67</li>
                     </ul>
                 </div>
